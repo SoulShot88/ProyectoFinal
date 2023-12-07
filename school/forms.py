@@ -2,14 +2,12 @@ from django import forms
 from django.contrib.auth.models import User
 from . import models
 
-#for admin
 class AdminSigupForm(forms.ModelForm):
     class Meta:
         model=User
         fields=['first_name','last_name','username','password']
 
 
-#for student related form
 class StudentUserForm(forms.ModelForm):
     class Meta:
         model=User
@@ -20,8 +18,6 @@ class StudentExtraForm(forms.ModelForm):
         fields=['roll','cl','mobile','status']
 
 
-
-#for teacher related form
 class TeacherUserForm(forms.ModelForm):
     class Meta:
         model=User
@@ -33,8 +29,6 @@ class TeacherExtraForm(forms.ModelForm):
 
 
 
-
-#for Attendance related form
 presence_choices=(('Presente','Presente'),('Ausente','Ausente'))
 class AttendanceForm(forms.Form):
     present_status=forms.ChoiceField( choices=presence_choices)
@@ -44,17 +38,12 @@ class AskDateForm(forms.Form):
     date=forms.DateField()
 
 
-
-
-#for notice related form
 class NoticeForm(forms.ModelForm):
     class Meta:
         model=models.Notice
         fields='__all__'
 
 
-
-#for contact us page
 class ContactusForm(forms.Form):
     Name = forms.CharField(max_length=30)
     Email = forms.EmailField()
